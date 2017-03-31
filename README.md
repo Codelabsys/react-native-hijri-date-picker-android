@@ -62,5 +62,7 @@ import HijriDatePickerAndroid from "react-native-hijri-date-picker-android";
   
 ## Credits
 
-This project was made by the help of [Assem-Hafez](https://github.com/Assem-Hafez) and [Mohamed-Abbas](https://github.com/Mohamed-Abbas) 
+This project was made by the help of [Assem-Hafez](https://github.com/Assem-Hafez) and [Mohamed-Abbas](https://github.com/Mohamed-Abbas)
 for the company we're working at [CodeLabSys](http://www.codelabsys.com/)
+
+And is based on the following projects, [material-hijri-calendarview](https://github.com/eltohamy/material-hijri-calendarview) and [ummalqura-calendar](https://github.com/msarhan/ummalqura-calendar)
