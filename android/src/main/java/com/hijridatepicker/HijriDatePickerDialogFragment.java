@@ -15,7 +15,8 @@ import com.github.eltohamy.materialhijricalendarview.CalendarDay;
 import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
 import com.github.eltohamy.materialhijricalendarview.OnDateSelectedListener;
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
-import com.hijridatepicker.R;
+
+import java.util.Calendar;
 
 import javax.annotation.Nullable;
 
@@ -33,9 +34,9 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
 
     Button doneBtn;
     MaterialHijriCalendarView widget;
-    int dayOfMonth = 0;
-    int monthOfYear = 0;
-    int year = 0;
+    int dayOfMonth;
+    int monthOfYear;
+    int year;
 
     Bundle args;
 
@@ -56,6 +57,10 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         doneBtn = (Button) view.findViewById(R.id.done_button);
         widget = (MaterialHijriCalendarView) view.findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
+        UmmalquraCalendar ummalquraCalendar = new UmmalquraCalendar();
+        dayOfMonth = ummalquraCalendar.get(Calendar.DAY_OF_MONTH);
+        monthOfYear = ummalquraCalendar.get(Calendar.MONTH);
+        year = ummalquraCalendar.get(Calendar.YEAR);
 
         customizeHijriCalendarView(widget, args, mOnExceptionListener);
         if (widget.getSelectedDate() != null)
