@@ -1,6 +1,6 @@
 {
   "name": "react-native-hijri-date-picker-android",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Date Dialog for Hijri calendar for android",
   "main": "index.android.js",
   "scripts": {
