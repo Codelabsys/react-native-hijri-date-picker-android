@@ -215,8 +215,13 @@ public class HijriDatePickerAndroidModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void convertHijriDateStrToGregorianMilliseconds(String hijriDate, Promise promise) {
+        try {
+            double milliseconds = convertHijriDateToGregorianMilliseconds(hijriDate);
+            promise.resolve(milliseconds);
+        } catch (Exception e) {
+            promise.reject(ERROR_CONVERT, "Exception while executing convertHijriDateStrToGregorianMilliseconds, Details: " + e.getMessage());
 
-        promise.resolve(convertHijriDateToGregorianMilliseconds(hijriDate));
+        }
     }
 
     /**
