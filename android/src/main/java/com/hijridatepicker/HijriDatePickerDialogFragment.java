@@ -88,7 +88,10 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
             } catch (Exception e) {
                 mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
                         "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_DATE + ", details: " + e.getMessage());
+                widget.setSelectedDate(new UmmalquraCalendar());
             }
+        } else {
+            widget.setSelectedDate(new UmmalquraCalendar());
         }
 
         //for now this calendar view has only one mode, so we wont use ARG_MODE TODO: customize the Dialog UI
