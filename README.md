@@ -43,7 +43,7 @@ import HijriDatePickerAndroid from "react-native-hijri-date-picker-android";
         console.warn("Dismissed");
       } else {
         let { year, day, month } = result;
-        console.warn("Hijri Date: " + day + "/" + month + 1 + "/" + year + "/");
+        console.warn("Hijri Date: " + day + "/" +( month + 1) + "/" + year + "/");
       }
     });
 	
