@@ -1,10 +1,15 @@
 
 # react-native-hijri-date-picker-android
+[![Codelab](http://www.codelabsys.com/images/logo.png)](http://www.codelabsys.com/) 
+
 
 #This Module version is experimental, if you found any issues, kindly submit. 
 
 ## Getting started
 
+### Installing
+   [![NPM](https://nodei.co/npm/react-native-hijri-date-picker-android.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-hijri-date-picker-android/)
+   
 `$ npm install react-native-hijri-date-picker-android --save`
 
 ### Mostly automatic installation
@@ -66,6 +71,6 @@ import HijriDatePickerAndroid from "react-native-hijri-date-picker-android";
 ## Credits
 
 This project was made by the help of [Assem-Hafez](https://github.com/Assem-Hafez) and [Mohamed-Abbas](https://github.com/Mohamed-Abbas)
-for the company we're working at [CodeLabSys](http://www.codelabsys.com/)
+for the company we're working at [Codelabsys](http://www.codelabsys.com/)
 
 And is based on the following projects, [material-hijri-calendarview](https://github.com/eltohamy/material-hijri-calendarview) and [ummalqura-calendar](https://github.com/msarhan/ummalqura-calendar)
