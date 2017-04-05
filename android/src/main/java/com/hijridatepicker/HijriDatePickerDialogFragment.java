@@ -3,9 +3,11 @@ package com.hijridatepicker;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +18,10 @@ import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
 import com.github.eltohamy.materialhijricalendarview.OnDateSelectedListener;
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Locale;
 
 import javax.annotation.Nullable;
 
@@ -61,8 +66,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         dayOfMonth = ummalquraCalendar.get(Calendar.DAY_OF_MONTH);
         monthOfYear = ummalquraCalendar.get(Calendar.MONTH);
         year = ummalquraCalendar.get(Calendar.YEAR);
-
-        customizeHijriCalendarView(widget, args, mOnExceptionListener);
+        customizeHijriCalendarView(getActivity(), widget, args, mOnExceptionListener);
         if (widget.getSelectedDate() != null)
             onDateSelected(widget, widget.getSelectedDate(), true);
 
@@ -77,7 +81,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         });
     }
 
-    public static void customizeHijriCalendarView(MaterialHijriCalendarView widget, Bundle args, HijriDatePickerAndroidModule.OnExceptionListener mOnExceptionListener) {
+    public static void customizeHijriCalendarView(Context mContext, MaterialHijriCalendarView widget, Bundle args, HijriDatePickerAndroidModule.OnExceptionListener mOnExceptionListener) {
 
         UmmalquraCalendar ummalquraCalendar = new UmmalquraCalendar();
 
@@ -94,7 +98,43 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
             widget.setSelectedDate(new UmmalquraCalendar());
         }
 
-        //for now this calendar view has only one mode, so we wont use ARG_MODE TODO: customize the Dialog UI
+        if (args != null && args.containsKey(HijriDatePickerAndroidModule.ARG_WEEK_DAY_LABELS)) {
+            try {
+                ArrayList<String> stringArrayList = args.getStringArrayList(HijriDatePickerAndroidModule.ARG_WEEK_DAY_LABELS);
+                if (stringArrayList != null) {
+                    String[] stringArray = Arrays.copyOf(stringArrayList.toArray(), stringArrayList.toArray().length, String[].class);
+                    widget.setWeekDayLabels(stringArray);
+                }
+            } catch (Exception e) {
+                mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
+                        "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_DATE + ", details: " + e.getMessage());
+            }
+        }
+
+        //TODO: customize the Dialog UI for more options
+        HijriDatePickerMode mode = HijriDatePickerMode.DEFAULT;
+        if (args != null && args.containsKey(HijriDatePickerAndroidModule.ARG_MODE) && args.getString(HijriDatePickerAndroidModule.ARG_MODE) != null) {
+            try {
+                mode = HijriDatePickerMode.valueOf(args.getString(HijriDatePickerAndroidModule.ARG_MODE).toUpperCase(Locale.US));
+            } catch (Exception e) {
+                mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
+                        "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_MODE + ", details: " + e.getMessage());
+            }
+        }
+        switch (mode) {
+            case NO_ARROWS:
+                widget.setLeftArrowMask(null);
+                widget.setRightArrowMask(null);
+                break;
+            case DEFAULT:
+                widget.setLeftArrowMask(ContextCompat.getDrawable(mContext, R.drawable.mcv_action_previous));
+                widget.setRightArrowMask(ContextCompat.getDrawable(mContext, R.drawable.mcv_action_next));
+                break;
+            default:
+                widget.setLeftArrowMask(ContextCompat.getDrawable(mContext, R.drawable.mcv_action_previous));
+                widget.setRightArrowMask(ContextCompat.getDrawable(mContext, R.drawable.mcv_action_next));
+                break;
+        }
 
         if (args != null && args.containsKey(HijriDatePickerAndroidModule.ARG_MINDATE)) {
             try {
@@ -143,5 +183,16 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
     void setOnDismissListener(@Nullable DialogInterface.OnDismissListener onDismissListener) {
         mOnDismissListener = onDismissListener;
     }
+
+
+    /**
+     * Date picker modes
+     */
+    public enum HijriDatePickerMode {
+        DEFAULT,
+        NO_ARROWS
+    }
+
+
 }
 

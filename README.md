@@ -37,7 +37,10 @@ import HijriDatePickerAndroid from "react-native-hijri-date-picker-android";
 
 	let options = { date: new Date(), minDate: new Date(new Date().getTime() - (1 * 30 * 24 * 60 * 60 * 1000)), maxDate: new Date(new Date().getTime() + (1 * 30 * 24 * 60 * 60 * 1000)) };
     let stringOptions = { date: "27-7-1438", minDate: "25-6-1438", maxDate: "29-8-1438" };
-    //accepts option  dates with dateobjects or strings in the following format ['dd-MM-yyyy'] 
+	//mode:"no_arrows" hide the arrows at the bar of the calendar
+	//weekDayLabels, override the default day labels at the calendar
+	let moreOptions = { date: "27-7-1438", minDate: "25-6-1438", maxDate: "29-8-1438", mode:"no_arrows", weekDayLabels:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]};
+    //accepts option  dates with date objects or strings in the following format ['dd-MM-yyyy'] 
     HijriDatePickerAndroid.open(stringOptions).then(function (result) {
       if (result.action == HijriDatePickerAndroid.dismissedAction) {
         console.warn("Dismissed");

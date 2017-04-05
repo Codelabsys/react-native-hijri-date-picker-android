@@ -14,7 +14,6 @@ import android.widget.Button;
 import com.github.eltohamy.materialhijricalendarview.CalendarDay;
 import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
 import com.github.eltohamy.materialhijricalendarview.OnDateSelectedListener;
-import com.hijridatepicker.R;
 
 import javax.annotation.Nullable;
 
@@ -58,7 +57,7 @@ public class SupportHijriDatePickerDialogFragment extends DialogFragment impleme
         widget = (MaterialHijriCalendarView) view.findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
 
-        customizeHijriCalendarView(widget, args,mOnExceptionListener);
+        customizeHijriCalendarView(getActivity(), widget, args, mOnExceptionListener);
         onDateSelected(widget, widget.getSelectedDate(), true);
 
         doneBtn.setOnClickListener(new View.OnClickListener() {

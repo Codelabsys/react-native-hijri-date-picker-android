@@ -14,12 +14,14 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.github.msarhan.ummalqura.calendar.UmmalquraCalendar;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +42,8 @@ public class HijriDatePickerAndroidModule extends ReactContextBaseJavaModule {
     static final String ARG_DATE = "date";
     static final String ARG_MINDATE = "minDate";
     static final String ARG_MAXDATE = "maxDate";
-    private static final String ARG_MODE = "mode";
+    static final String ARG_WEEK_DAY_LABELS = "weekDayLabels";
+    public static final String ARG_MODE = "mode";
 
 
     public HijriDatePickerAndroidModule(final ReactApplicationContext reactContext) {
@@ -87,7 +90,11 @@ public class HijriDatePickerAndroidModule extends ReactContextBaseJavaModule {
      *                to select
      *                </li>
      *                <li>
-     *                {@code mode} To set the date picker mode to 'calendar/spinner/default' , currently there's only one mode for HijriDatePicker, so this field is ignored
+     *                {@code mode} To set the date picker mode to ' no_arrows/default' ,
+     *                currently there's only one mode for HijriDatePicker, so this field works only with mode no_arrows/default
+     *                </li>
+     *                <li>
+     *                {@code weekDayLabels} (array of strings) the day labels that appears on the calendar
      *                </li>
      *                </ul>
      * @param promise This will be invoked with parameters action, year,
@@ -165,11 +172,22 @@ public class HijriDatePickerAndroidModule extends ReactContextBaseJavaModule {
             if (options.hasKey(ARG_MODE) && !options.isNull(ARG_MODE)) {
                 args.putString(ARG_MODE, options.getString(ARG_MODE));
             }
+            if (options.hasKey(ARG_WEEK_DAY_LABELS) && !options.isNull(ARG_WEEK_DAY_LABELS)) {
+                args.putStringArrayList(ARG_WEEK_DAY_LABELS, toStringArrayList(options.getArray(ARG_WEEK_DAY_LABELS)));
+            }
         } catch (Exception e) {
             promise.reject(ERROR_PARSING_OPTIONS, "Exception happened while parsing options, details: " + e.getMessage());
             return null;
         }
         return args;
+    }
+
+    private ArrayList<String> toStringArrayList(ReadableArray readableArray) {
+        ArrayList<String> stringList = new ArrayList<>();
+        for (int i = 0; i < readableArray.size(); i++) {
+            stringList.add(readableArray.getString(i));
+        }
+        return stringList;
     }
 
     private boolean parseOptionsWithKey(String ARG_KEY, ReadableMap options, Bundle args, Promise promise) {
