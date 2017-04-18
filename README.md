@@ -68,6 +68,11 @@ import HijriDatePickerAndroid from "react-native-hijri-date-picker-android";
 
 ```
   
+## For IOS
+ 
+Check out our IOS project [react-native-universal-datepicker-ios](https://github.com/Codelabsys/react-native-universal-datepicker-ios) 
+  
+  
 ## Credits
 
 This project was made by the help of [Assem-Hafez](https://github.com/Assem-Hafez) and [Mohamed-Abbas](https://github.com/Mohamed-Abbas)
