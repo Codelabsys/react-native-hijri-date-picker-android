@@ -6,6 +6,9 @@
 #This Module version is experimental, if you found any issues, kindly submit. 
 
 ## Getting started
+### Versions
+For React Native >= 0.47.0 use v2.+
+For React Native < 0.47.0 use v1.0.8
 
 ### Installing
    [![NPM](https://nodei.co/npm/react-native-hijri-date-picker-android.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-hijri-date-picker-android/)
