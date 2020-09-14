@@ -21,6 +21,11 @@ public class HijriDialogViewManagerPackage implements ReactPackage {
     }
 
     @Override
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return null;
+    }
+
+    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Collections.emptyList();
     }
