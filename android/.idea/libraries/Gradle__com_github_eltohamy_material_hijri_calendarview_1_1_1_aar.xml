@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.eltohamy:material-hijri-calendarview:1.1.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af56b30d3b37d438cc4772487f16963f/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af56b30d3b37d438cc4772487f16963f/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af56b30d3b37d438cc4772487f16963f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af56b30d3b37d438cc4772487f16963f/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.eltohamy/material-hijri-calendarview/1.1.1/81e2efa06a9354167c3669578bbfabdd8b95578d/material-hijri-calendarview-1.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.eltohamy/material-hijri-calendarview/1.1.1/8f90eb571f75916432a411b30f83621a0a1703ac/material-hijri-calendarview-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
