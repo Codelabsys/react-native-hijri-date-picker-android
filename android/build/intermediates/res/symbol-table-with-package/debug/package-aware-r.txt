@@ -92,6 +92,7 @@ attr contentInsetLeft
 attr contentInsetRight
 attr contentInsetStart
 attr controlBackground
+attr coordinatorLayoutStyle
 attr customNavigationLayout
 attr defaultQueryHint
 attr dialogPreferredPadding
@@ -113,6 +114,15 @@ attr expandActivityOverflowButtonDrawable
 attr fadeDuration
 attr failureImage
 attr failureImageScaleType
+attr font
+attr fontProviderAuthority
+attr fontProviderCerts
+attr fontProviderFetchStrategy
+attr fontProviderFetchTimeout
+attr fontProviderPackage
+attr fontProviderQuery
+attr fontStyle
+attr fontWeight
 attr gapBetweenBars
 attr goIcon
 attr height
@@ -125,8 +135,15 @@ attr indeterminateProgressStyle
 attr initialActivityCount
 attr isLightTheme
 attr itemPadding
+attr keylines
 attr layout
 attr layoutManager
+attr layout_anchor
+attr layout_anchorGravity
+attr layout_behavior
+attr layout_dodgeInsetEdges
+attr layout_insetEdge
+attr layout_keyline
 attr listChoiceBackgroundIndicator
 attr listDividerAlertDialog
 attr listItemLayout
@@ -208,6 +225,7 @@ attr spinnerStyle
 attr splitTrack
 attr stackFromEnd
 attr state_above_anchor
+attr statusBarBackground
 attr submitBackground
 attr subtitle
 attr subtitleTextAppearance
@@ -314,6 +332,9 @@ color material_grey_850
 color material_grey_900
 color mcv_text_date_dark
 color mcv_text_date_light
+color notification_action_color_filter
+color notification_icon_bg_color
+color notification_material_background_media_default_color
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -394,6 +415,11 @@ dimen abc_text_size_subhead_material
 dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
+dimen compat_button_inset_horizontal_material
+dimen compat_button_inset_vertical_material
+dimen compat_button_padding_horizontal_material
+dimen compat_button_padding_vertical_material
+dimen compat_control_corner_material
 dimen dialog_fixed_height_major
 dimen dialog_fixed_height_minor
 dimen dialog_fixed_width_major
@@ -404,9 +430,21 @@ dimen highlight_alpha_material_colored
 dimen highlight_alpha_material_dark
 dimen highlight_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
+dimen notification_action_icon_size
+dimen notification_action_text_size
+dimen notification_big_circle_margin
+dimen notification_content_margin_start
 dimen notification_large_icon_height
 dimen notification_large_icon_width
+dimen notification_main_column_padding_top
+dimen notification_media_narrow_margin
+dimen notification_right_icon_size
+dimen notification_right_side_padding_top
+dimen notification_small_icon_background_padding
+dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
+dimen notification_top_pad
+dimen notification_top_pad_large_text
 drawable abc_ab_share_pack_mtrl_alpha
 drawable abc_action_bar_item_background_material
 drawable abc_btn_borderless_material
@@ -471,7 +509,18 @@ drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable mcv_action_next
 drawable mcv_action_previous
+drawable notification_action_background
+drawable notification_bg
+drawable notification_bg_low
+drawable notification_bg_low_normal
+drawable notification_bg_low_pressed
+drawable notification_bg_normal
+drawable notification_bg_normal_pressed
+drawable notification_icon_background
 drawable notification_template_icon_bg
+drawable notification_template_icon_low_bg
+drawable notification_tile_bg
+drawable notify_panel_notification_icon_bg
 id action0
 id action_bar
 id action_bar_activity_content
@@ -480,18 +529,24 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_container
 id action_context_bar
 id action_divider
+id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_text
+id actions
 id activity_chooser_view_content
 id alertTitle
-id all
 id always
+id async
 id beginning
+id blocking
+id bottom
 id buttonPanel
 id calendarView
 id cancel_action
@@ -506,9 +561,7 @@ id contentPanel
 id custom
 id customPanel
 id decor_content_parent
-id decorated_disabled
 id default_activity_button
-id defaults
 id disableHome
 id done_button
 id edit_query
@@ -521,15 +574,19 @@ id fitEnd
 id fitStart
 id fitXY
 id focusCrop
+id forever
 id fps_text
 id friday
 id home
 id homeAsUp
 id icon
+id icon_group
 id ifRoom
 id image
 id info
+id italic
 id item_touch_helper_previous_elevation
+id left
 id line1
 id line3
 id listMode
@@ -542,12 +599,16 @@ id multiply
 id never
 id none
 id normal
-id other_months
-id out_of_range
+id notification_background
+id notification_main_column
+id notification_main_column_container
 id parentPanel
 id progress_circular
 id progress_horizontal
 id radio
+id right
+id right_icon
+id right_side
 id rn_frame_file
 id rn_frame_method
 id rn_redbox_reloadjs
@@ -574,10 +635,12 @@ id split_action_bar
 id src_atop
 id src_in
 id src_over
+id start
 id status_bar_latest_event_content
 id submit_area
 id sunday
 id tabMode
+id tag_transition_group
 id text
 id text2
 id textSpacerNoButtons
@@ -585,6 +648,7 @@ id thursday
 id time
 id title
 id title_template
+id top
 id topPanel
 id tuesday
 id up
@@ -623,12 +687,20 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout dialog_basic
 layout fps_view
+layout notification_action
+layout notification_action_tombstone
 layout notification_media_action
 layout notification_media_cancel_action
 layout notification_template_big_media
+layout notification_template_big_media_custom
 layout notification_template_big_media_narrow
+layout notification_template_big_media_narrow_custom
+layout notification_template_custom_big
+layout notification_template_icon_group
 layout notification_template_lines
+layout notification_template_lines_media
 layout notification_template_media
+layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout redbox_item_frame
@@ -887,6 +959,16 @@ style TextAppearance_AppCompat_Widget_PopupMenu_Large
 style TextAppearance_AppCompat_Widget_PopupMenu_Small
 style TextAppearance_AppCompat_Widget_Switch
 style TextAppearance_AppCompat_Widget_TextView_SpinnerItem
+style TextAppearance_Compat_Notification
+style TextAppearance_Compat_Notification_Info
+style TextAppearance_Compat_Notification_Info_Media
+style TextAppearance_Compat_Notification_Line2
+style TextAppearance_Compat_Notification_Line2_Media
+style TextAppearance_Compat_Notification_Media
+style TextAppearance_Compat_Notification_Time
+style TextAppearance_Compat_Notification_Time_Media
+style TextAppearance_Compat_Notification_Title
+style TextAppearance_Compat_Notification_Title_Media
 style TextAppearance_MaterialCalendarWidget_Date
 style TextAppearance_MaterialCalendarWidget_Header
 style TextAppearance_MaterialCalendarWidget_WeekDay
@@ -988,6 +1070,9 @@ style Widget_AppCompat_Spinner_Underlined
 style Widget_AppCompat_TextView_SpinnerItem
 style Widget_AppCompat_Toolbar
 style Widget_AppCompat_Toolbar_Button_Navigation
+style Widget_Compat_NotificationActionContainer
+style Widget_Compat_NotificationActionText
+style Widget_Support_CoordinatorLayout
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetLeft contentInsetRight contentInsetStart customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -997,7 +1082,11 @@ styleable ActivityChooserView expandActivityOverflowButtonDrawable initialActivi
 styleable AlertDialog android_layout buttonPanelSideLayout listItemLayout listLayout multiChoiceItemLayout singleChoiceItemLayout
 styleable AppCompatTextView android_textAppearance textAllCaps
 styleable CompoundButton android_button buttonTint buttonTintMode
+styleable CoordinatorLayout keylines statusBarBackground
+styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
+styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
+styleable FontFamilyFont android_font android_fontStyle android_fontWeight font fontStyle fontWeight
 styleable GenericDraweeView actualImageScaleType backgroundImage fadeDuration failureImage failureImageScaleType overlayImage placeholderImage placeholderImageScaleType pressedStateOverlayImage progressBarAutoRotateInterval progressBarImage progressBarImageScaleType retryImage retryImageScaleType roundAsCircle roundBottomLeft roundBottomRight roundTopLeft roundTopRight roundWithOverlayColor roundedCornerRadius roundingBorderColor roundingBorderWidth viewAspectRatio
 styleable LinearLayoutCompat android_baselineAligned android_baselineAlignedChildIndex android_gravity android_orientation android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_height android_layout_weight android_layout_width
