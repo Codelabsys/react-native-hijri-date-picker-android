@@ -20,7 +20,7 @@ public class HijriDialogViewManagerPackage implements ReactPackage {
         return nativeModules;
     }
 
-    @Override
+//    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return null;
     }
