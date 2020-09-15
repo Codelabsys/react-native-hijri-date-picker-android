@@ -24,6 +24,6 @@
   },
 "homepage": "https://github.com/mohamed-habib/react-native-hijri-date-picker-android#readme",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "^0.60.6"
   }
 }
