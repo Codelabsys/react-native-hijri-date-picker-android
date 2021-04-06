@@ -140,7 +140,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
             try {
                 ummalquraCalendar.setTimeInMillis(args.getLong(HijriDatePickerAndroidModule.ARG_MINDATE));
                 widget.setMinimumDate(ummalquraCalendar);
-                widget.setShowOtherDates(MaterialHijriCalendarView.SHOW_OTHER_MONTHS);
+                widget.setShowOtherDates(MaterialHijriCalendarView.SHOW_ALL);
             } catch (Exception e) {
                 mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
                         "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_MINDATE + ", details: " + e.getMessage());
@@ -151,6 +151,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
             try {
                 ummalquraCalendar.setTimeInMillis(args.getLong(HijriDatePickerAndroidModule.ARG_MAXDATE));
                 widget.setMaximumDate(ummalquraCalendar);
+                widget.setShowOtherDates(MaterialHijriCalendarView.SHOW_ALL);
             } catch (Exception e) {
                 mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
                         "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_MAXDATE + ", details: " + e.getMessage());
