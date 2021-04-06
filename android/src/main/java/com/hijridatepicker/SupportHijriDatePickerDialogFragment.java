@@ -67,7 +67,7 @@ public class SupportHijriDatePickerDialogFragment extends DialogFragment impleme
         onDateSelected(widget, widget.getSelectedDate(), true);
 
         txt_year.setText(widget.getCurrentDate().getYear());
-        txt_date.setText(widget.getCurrentDate().getDate().toString());
+//        txt_date.setText(widget.getCurrentDate().getDate().toString());
 
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
