@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.eltohamy.materialhijricalendarview.CalendarDay;
 import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
@@ -38,6 +39,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
     private HijriDatePickerAndroidModule.OnExceptionListener mOnExceptionListener;
 
     Button doneBtn, cancelBtn;
+    TextView txt_year,txt_date;
     MaterialHijriCalendarView widget;
     int dayOfMonth;
     int monthOfYear;
@@ -61,12 +63,18 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         super.onViewCreated(view, savedInstanceState);
         doneBtn = (Button) view.findViewById(R.id.done_button);
         cancelBtn = (Button) view.findViewById(R.id.cancel_button);
+        txt_year = (TextView) view.findViewById(R.id.txt_year);
+        txt_date = (TextView) view.findViewById(R.id.txt_date);
         widget = (MaterialHijriCalendarView) view.findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
         UmmalquraCalendar ummalquraCalendar = new UmmalquraCalendar();
         dayOfMonth = ummalquraCalendar.get(Calendar.DAY_OF_MONTH);
         monthOfYear = ummalquraCalendar.get(Calendar.MONTH);
         year = ummalquraCalendar.get(Calendar.YEAR);
+
+        txt_year.setText(year);
+        txt_date.setText(dayOfMonth + " " + monthOfYear);
+
         customizeHijriCalendarView(getActivity(), widget, args, mOnExceptionListener);
         if (widget.getSelectedDate() != null)
             onDateSelected(widget, widget.getSelectedDate(), true);
