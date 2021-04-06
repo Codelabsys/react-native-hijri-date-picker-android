@@ -31,7 +31,7 @@ public class SupportHijriDatePickerDialogFragment extends DialogFragment impleme
     @Nullable
     private HijriDatePickerAndroidModule.OnExceptionListener mOnExceptionListener;
 
-    Button doneBtn;
+    Button doneBtn,cancelBtn;
     MaterialHijriCalendarView widget;
     int dayOfMonth = 0;
     int monthOfYear = 0;
@@ -54,6 +54,7 @@ public class SupportHijriDatePickerDialogFragment extends DialogFragment impleme
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         doneBtn = (Button) view.findViewById(R.id.done_button);
+        cancelBtn = (Button) view.findViewById(R.id.cancel_button);
         widget = (MaterialHijriCalendarView) view.findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
 
@@ -66,6 +67,13 @@ public class SupportHijriDatePickerDialogFragment extends DialogFragment impleme
                 if (mOnDateSetListener != null) {
                     mOnDateSetListener.onDateSet(null, year, monthOfYear, dayOfMonth);
                 }
+                dismiss();
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dismiss();
             }
         });
