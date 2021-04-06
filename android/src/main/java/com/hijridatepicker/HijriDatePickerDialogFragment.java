@@ -37,7 +37,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
     @Nullable
     private HijriDatePickerAndroidModule.OnExceptionListener mOnExceptionListener;
 
-    Button doneBtn;
+    Button doneBtn, cancelBtn;
     MaterialHijriCalendarView widget;
     int dayOfMonth;
     int monthOfYear;
@@ -60,6 +60,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         doneBtn = (Button) view.findViewById(R.id.done_button);
+        cancelBtn = (Button) view.findViewById(R.id.cancel_button);
         widget = (MaterialHijriCalendarView) view.findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
         UmmalquraCalendar ummalquraCalendar = new UmmalquraCalendar();
@@ -76,6 +77,13 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
                 if (mOnDateSetListener != null) {
                     mOnDateSetListener.onDateSet(null, year, monthOfYear, dayOfMonth);
                 }
+                dismiss();
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dismiss();
             }
         });
