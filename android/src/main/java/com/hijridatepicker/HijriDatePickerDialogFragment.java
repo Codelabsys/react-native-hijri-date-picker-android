@@ -72,8 +72,8 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         monthOfYear = ummalquraCalendar.get(Calendar.MONTH);
         year = ummalquraCalendar.get(Calendar.YEAR);
 
-        txt_year.setText(year);
-        txt_date.setText(dayOfMonth + " " + monthOfYear);
+//        txt_year.setText(year);
+//        txt_date.setText(dayOfMonth + " " + monthOfYear);
 
         customizeHijriCalendarView(getActivity(), widget, args, mOnExceptionListener);
         if (widget.getSelectedDate() != null)
