@@ -149,7 +149,11 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         if (args != null && args.containsKey(HijriDatePickerAndroidModule.ARG_MINDATE)) {
             try {
                 ummalquraCalendar.setTimeInMillis(args.getLong(HijriDatePickerAndroidModule.ARG_MINDATE));
-                widget.setMinimumDate(ummalquraCalendar);
+                try{
+                    widget.setMinimumDate(ummalquraCalendar);
+                }
+                catch(Exception e){
+                }
                 widget.setShowOtherDates(MaterialHijriCalendarView.SHOW_ALL);
             } catch (Exception e) {
                 mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
