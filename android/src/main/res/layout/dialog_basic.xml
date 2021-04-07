@@ -5,24 +5,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:padding="15dp"-->
+<!--        android:background="#009688">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txt_year"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:text="1442"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txt_date"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="30sp"-->
+<!--            android:text="Mon, Sha 1"/>-->
+
+
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="start"
+        android:padding="10dp">
+
     <com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView
         android:id="@+id/calendarView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         app:mcv_tileSize="40dp" />
 
-    <View
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:weightSum="3">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1.5"/>
 
     <Button
-        android:id="@+id/done_button"
-        android:layout_width="match_parent"
+        android:id="@+id/cancel_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="?attr/selectableItemBackground"
-        android:text="@string/done" />
+        android:text="@string/cancel"
+        android:layout_weight="0.75"/>
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:text="@string/done"
+        android:layout_weight="0.75"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

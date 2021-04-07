@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.github.eltohamy.materialhijricalendarview.CalendarDay;
 import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
@@ -37,7 +38,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
     @Nullable
     private HijriDatePickerAndroidModule.OnExceptionListener mOnExceptionListener;
 
-    Button doneBtn;
+    Button doneBtn, cancelBtn;
     MaterialHijriCalendarView widget;
     int dayOfMonth;
     int monthOfYear;
@@ -60,12 +61,14 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         doneBtn = (Button) view.findViewById(R.id.done_button);
+        cancelBtn = (Button) view.findViewById(R.id.cancel_button);
         widget = (MaterialHijriCalendarView) view.findViewById(R.id.calendarView);
         widget.setOnDateChangedListener(this);
         UmmalquraCalendar ummalquraCalendar = new UmmalquraCalendar();
         dayOfMonth = ummalquraCalendar.get(Calendar.DAY_OF_MONTH);
         monthOfYear = ummalquraCalendar.get(Calendar.MONTH);
         year = ummalquraCalendar.get(Calendar.YEAR);
+
         customizeHijriCalendarView(getActivity(), widget, args, mOnExceptionListener);
         if (widget.getSelectedDate() != null)
             onDateSelected(widget, widget.getSelectedDate(), true);
@@ -76,6 +79,13 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
                 if (mOnDateSetListener != null) {
                     mOnDateSetListener.onDateSet(null, year, monthOfYear, dayOfMonth);
                 }
+                dismiss();
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dismiss();
             }
         });
@@ -139,7 +149,12 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
         if (args != null && args.containsKey(HijriDatePickerAndroidModule.ARG_MINDATE)) {
             try {
                 ummalquraCalendar.setTimeInMillis(args.getLong(HijriDatePickerAndroidModule.ARG_MINDATE));
-                widget.setMinimumDate(ummalquraCalendar);
+                try{
+                    widget.setMinimumDate(ummalquraCalendar);
+                }
+                catch(Exception e){
+                }
+                widget.setShowOtherDates(MaterialHijriCalendarView.SHOW_ALL);
             } catch (Exception e) {
                 mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
                         "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_MINDATE + ", details: " + e.getMessage());
@@ -150,6 +165,7 @@ public class HijriDatePickerDialogFragment extends DialogFragment implements OnD
             try {
                 ummalquraCalendar.setTimeInMillis(args.getLong(HijriDatePickerAndroidModule.ARG_MAXDATE));
                 widget.setMaximumDate(ummalquraCalendar);
+                widget.setShowOtherDates(MaterialHijriCalendarView.SHOW_ALL);
             } catch (Exception e) {
                 mOnExceptionListener.onException(HijriDatePickerAndroidModule.ERROR_PARSING_OPTIONS,
                         "Exception happened while parsing " + HijriDatePickerAndroidModule.ARG_MAXDATE + ", details: " + e.getMessage());
